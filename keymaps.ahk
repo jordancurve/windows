@@ -20,7 +20,7 @@ state := 0
 return
 
 ;Key mappings for typing common math symbols. Abbreviations are mostly
-;from latex.
+;from HTML and LaTeX.
 
 :*:==-::—
 :*:\\cdot::·
@@ -38,3 +38,8 @@ return
 :*:\\inf::∞
 :*:\\max::∨
 :*:\\min::∧
+:*:\\lfloor::⌊
+:*:\\rfloor::⌋
+:*:\\lceil::⌈
+:*:\\rceil::⌉
+;SC07b:: ; how to map the HHKB "diamond" key 
