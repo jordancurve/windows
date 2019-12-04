@@ -1,22 +1,37 @@
-#NoEnv  ; Recommended for performance and compatibility with future AutoHotkey releases.
-; #Warn  ; Enable warnings to assist with detecting common errors.
-; SendMode Input  ; Recommended for new scripts due to its superior speed and reliability.
-; SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
+#NoEnv
+SendMode Input
+SetWorkingDir %A_ScriptDir%
 #SingleInstance Force
 
-;Send Esc rather than Ctrl when Ctrl is released provided that neither Shift,
-;Alt, nor Win is pressed.
-;Author: Autohotkey forum user RHCP
-;http://www.autohotkey.com/board/topic/103174-dual-function-control-key/
+; Send Esc rather than Ctrl on CtrlUp, if all of the following are true:
+; - neither Shift, Alt, nor Win was down at the time of CtrlDown
+; - the key event prior to CtrlUp was CtrlDown
+; - less than 1 s has elapsed between CtrlDown and CtrlUp
+; The Esc that this script would normally generate on CtrlUp can be cancelled
+; by waiting at least 1 second between CtrlDown and CtrlUp.
+; Author: jordancurve. Based on script by Autohotkey forum user RHCP
+; http://www.autohotkey.com/board/topic/103174-dual-function-control-key/
 $~*Ctrl::
-if !state
-    state :=  (GetKeyState("Shift", "P") ||  GetKeyState("Alt", "P") || GetKeyState("LWin", "P") || GetKeyState("RWin", "P"))
+if !ctrlDownTime_ms {
+  ctrlDownTime_ms := A_TickCount
+  otherModifiersPressed := GetKeyState("Shift", "P") 
+      || GetKeyState("Alt", "P")
+      || GetKeyState("LWin", "P")
+      || GetKeyState("RWin", "P")
+}
 return
 
 $~ctrl up::
-if instr(A_PriorKey, "control") && !state
-    send {esc}
-state := 0
+ctrlUpTime_ms := A_TickCount
+ctrlHeldDur_ms := ctrlUpTime_ms - ctrlDownTime_ms 
+if instr(A_PriorKey, "control")
+    && !otherModifiersPressed
+    && ctrlHeldDur_ms < 1000 {
+  send {esc}
+} else {
+  send {ctrl}
+}
+ctrlDownTime_ms := 0
 return
 
 ;Key mappings for typing common math symbols. Abbreviations are mostly
