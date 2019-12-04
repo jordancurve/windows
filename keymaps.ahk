@@ -4,16 +4,14 @@ SetWorkingDir %A_ScriptDir%
 #SingleInstance Force
 
 ; Send Esc rather than Ctrl on CtrlUp, if all of the following are true:
-; - neither Shift, Alt, nor Win was down at the time of CtrlDown
+; - neither Shift, Alt, nor Win was down immediately before or during CtrlDown
 ; - the key event prior to CtrlUp was CtrlDown
-; - less than 1 s has elapsed between CtrlDown and CtrlUp
-; The Esc that this script would normally generate on CtrlUp can be cancelled
-; by waiting at least 1 second between CtrlDown and CtrlUp.
+; The Esc that this script would normally generate on CtrlUp can be prevented
+; by pressing Shift, Alt, or Win before CtrlUp.
 ; Author: jordancurve. Based on script by Autohotkey forum user RHCP
 ; http://www.autohotkey.com/board/topic/103174-dual-function-control-key/
 $~*Ctrl::
-if !ctrlDownTime_ms {
-  ctrlDownTime_ms := A_TickCount
+if !otherModifiersPressed {
   otherModifiersPressed := GetKeyState("Shift", "P") 
       || GetKeyState("Alt", "P")
       || GetKeyState("LWin", "P")
@@ -22,14 +20,11 @@ if !ctrlDownTime_ms {
 return
 
 $~ctrl up::
-ctrlUpTime_ms := A_TickCount
-ctrlHeldDur_ms := ctrlUpTime_ms - ctrlDownTime_ms 
 if instr(A_PriorKey, "control")
-    && !otherModifiersPressed
-    && ctrlHeldDur_ms < 1000 {
+    && !otherModifiersPressed {
   send {esc}
 }
-ctrlDownTime_ms := 0
+otherModifiersPressed := false
 return
 
 ;Key mappings for typing common math symbols. Abbreviations are mostly
