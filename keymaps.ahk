@@ -28,8 +28,6 @@ if instr(A_PriorKey, "control")
     && !otherModifiersPressed
     && ctrlHeldDur_ms < 1000 {
   send {esc}
-} else {
-  send {ctrl}
 }
 ctrlDownTime_ms := 0
 return
