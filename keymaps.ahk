@@ -8,7 +8,7 @@ SetWorkingDir %A_ScriptDir%
 ; - the key event prior to CtrlUp was CtrlDown
 ; The Esc that this script would normally generate on CtrlUp can be prevented
 ; by pressing Shift, Alt, or Win before CtrlUp.
-; Author: jordancurve. Based on script by Autohotkey forum user RHCP
+; Author: Autohotkey forum user RHCP (w/variable renamed by jordancurve)
 ; http://www.autohotkey.com/board/topic/103174-dual-function-control-key/
 $~*Ctrl::
 if !otherModifiersPressed {
@@ -20,8 +20,7 @@ if !otherModifiersPressed {
 return
 
 $~ctrl up::
-if instr(A_PriorKey, "control")
-    && !otherModifiersPressed {
+if instr(A_PriorKey, "control") && !otherModifiersPressed {
   send {esc}
 }
 otherModifiersPressed := false
