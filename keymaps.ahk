@@ -30,45 +30,52 @@ return
 ;from HTML and LaTeX.
 
 #hotstring C O ? Z
-::\---::—
-::\cdot::·
-::\mu::μ
-::\sigma::σ
-::\ge::≥
-::\le::≤
-::theta::θ
-::\phi::φ
-::\pi::π
-::\pm::±
-::\gamma::γ
-::\s::§
-::\rarr::→
-::\inf::∞
-::\lor::∨
-::\land::∧
-::\lfloor::⌊
-::\rfloor::⌋
-::\lceil::⌈
-::\rceil::⌉
-::\Delta::Δ
-::\delta::δ
-::\Chi::Ξ
-::\chi::ξ
-::\subseteq::⊆
-::\psubset::⊂
-::\ne::≠
-::\ex::∃
-::\all::∀
-::\epsilon::∊
-::\box::∎
-::\Sigma::∑
-::\N::ℕ
-::\Z::ℤ
-::\Q::ℚ
-::\R::ℝ
-::\emptyset::∅
-::\degree::°
-::\top::⊤
-::\bot::⊥
+::\alpha::{U+03B1} ; α
+::\Alpha::{U+0391} ; Α
+::\beta::{U+03B2} ; β
+::\Beta::{U+0392} ; Β
+::\rho::{U+03C1} ; ρ
+::\-::{U+2014} ; — (em dash)
+::\cdot::{U+00B7} ; ·
+::\mu::{U+03BC}  ; μ
+::\sigma::{U+03C3} σ
+::\Sigma::{U+03A3} ; Σ
+::\ge::{U+2265} ; ≥
+::\le::{U+2264} ; ≤
+::\theta::{U+03B8} ; θ
+::\phi::{U+03C6} ; φ
+::\pi::{U+03C0} ; π
+::\Pi::{U+03A0} ; Π
+::\pm::{U+00B1} ; ±
+::\gamma::{U+03B3} ; γ
+::\s::{U+00A7} ; §
+::\rarr::{U+2192} ; →
+::\inf::{U+221E} ; ∞
+::\lor::{U+2228} ; ∨
+::\land::{U+2227} ; ∧
+::\lfloor::{U+230A} ; ⌊
+::\rfloor::{U+230B} ; ⌋
+::\lceil::{U+2308} ; ⌈
+::\rceil::{U+2309} ; ⌉
+::\Delta::{U+0394} ; Δ
+::\delta:: {U+03B4} ;  δ
+::\Chi::{U+03A7} ; Χ
+::\chi::{U+03C7} ; χ
+::\subseteq::{U+2286} ; ⊆
+::\psubset::{U+2282} ; ⊂
+::\ne::{U+2260} ; ≠
+::\ex::{U+2203} ; ∃
+::\all::{U+2200} ; ∀
+::\in::{U+03F5} ; ϵ
+::\box::{U+220E} ; ∎
+::\N::{U+2115} ; ℕ
+::\Z::{U+2124} ; ℤ
+::\Q::{U+211A} ; ℚ
+::\R::{U+211D} ; ℝ
+::\emptyset::{U+2205} ; ∅
+::\deg::{U+00B0} ; °
+::\top::{U+22A4} ; ⊤
+::\bot::{U+22A5} ; ⊥
+::\rhat::r̂
 
 ;SC07b:: ; how to map the HHKB "diamond" key 
